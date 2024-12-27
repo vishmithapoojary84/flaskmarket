@@ -1,0 +1,95 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> 
+       {% block title %}
+        BASE PAGE
+      {% endblock title %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      body{
+        background-color: #212121;
+        color:aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Flask  Market</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('home_page')}}">Home </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{url_for('market_page')}}">Market</a>
+          </li>
+      </ul>
+      {% if current_user.is_authenticated %}
+      
+
+      <ul class="navbar-nav ms-auto"">
+        <li class="nav-item">
+            <a class="nav-link" style="color:lawngreen; font-weight: bold;" >
+              <i class="fas fa-coins"></i> 
+              {% if current_user.prettier_budgets is not none %}
+                {{ current_user.prettier_budgets }} 
+              {% else %}
+                <span class="text-danger">No budget</span> <!-- Debugging message -->
+              {% endif %}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" >Welcome {{current_user.username}}</a>
+        </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{url_for('logout_page')}}">Logout</a>
+          </li>
+      </ul>
+      {% else %}
+        
+      
+      <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a class="nav-link" href="{{url_for('login_page')}}">Login</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
+          </li>
+      </ul>
+      {% endif %}
+      </div>
+    </nav>
+    {% with messages=get_flashed_messages(with_categories=true)%}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{category}}">
+          {{message}} 
+          
+
+          <button type="button" class="m1-2 mb-1 close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+          
+        </div>
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
+  {% block content %}
+    
+  {% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}
+REGISTER PAGE
+{% endblock title %}
+{% block content %}
+<body class="text-center" >
+
+
+<!-- <img src="{{ url_for('static', filename='images/18Sep24 Free Upload.png') }}" alt="Logo" class="img-fluid mx-auto d-block"> -->
+<h1 class="h3 mb-3 font-weight-normal text-center">Please Create Your Account</h1>
+<br>
+<div class="container">
+  <form action="" method="POST" class="form-register" style="color:white">
+    {{form.hidden_tag()}}
+    {{form.username.label()}} 
+    {{form.username(class="form-control form-control-sm w-50 mx-auto",placeholder="Enter your username")}}
+    {{form.email_address.label()}}
+    {{form.email_address(class="form-control form-control-sm w-50 mx-auto",placeholder="Enter your email address")}}
+    {{form.password1.label()}}
+    {{form.password1(class="form-control form-control-sm w-50 mx-auto",placeholder="Enter your password")}}
+    {{form.password2.label()}}
+    {{form.password2(class="form-control form-control-sm w-50 mx-auto",placeholder="    Enter your password")}}
+   
+   <br>
+   <div class="text-center">
+    {{form.submit(class="btn btn-lg btn-block btn-primary form-control-sm w-50 mx-auto",placeholder="Enter your username")}}
+   </div>
+   <br> <br>
+   <div class="checkbox mb-3r">
+    <h6 class=" text-center">Do already have a account</h6>
+    <a href="{{url_for('login_page')}}" class="btn btn-sm btn-primary ">Sign In</a>
+  </div>
+</div>
+</body>
+{% endblock content %}

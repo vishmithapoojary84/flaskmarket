@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+LOGINR PAGE
+{% endblock title %}
+{% block content %}
+
+<body class="text-center" >
+
+
+  <!-- <img src="{{ url_for('static', filename='images/18Sep24 Free Upload.png') }}" alt="Logo" class="img-fluid mx-auto d-block"> -->
+
+  <br>
+  <div class="container">
+    <form action="" method="POST" class="form-signin" style="color:white">
+      {{form.hidden_tag()}}
+      <h1 class="h3 mb-3 font-weight-normal text-center">Please Sign In</h1><br>
+      {{form.username.label()}} 
+      {{form.username(class="form-control form-control-sm w-50 mx-auto",placeholder="Enter your username")}}
+      
+      {{form.password.label()}}
+      {{form.password(class="form-control form-control-sm w-50 mx-auto",placeholder="Enter your password")}}
+     
+     
+     <br>
+     {{form.submit(class="btn btn-lg btn-block btn-primary form-control-sm w-50 mx-auto",placeholder="Enter your username")}}
+     <br> <br>
+     <div class="checkbox mb-3r">
+      <h6 class=" text-center">Do not have a account</h6>
+      <a href="{{url_for('register_page')}}" class="btn btn-sm btn-primary ">Register</a>
+    </div>
+    <br>
+  </div>
+  </body>
+
+
+
+{% endblock content %}

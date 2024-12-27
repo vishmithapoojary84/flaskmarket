@@ -1,0 +1,236 @@
+pip install virtualenv
+virtualenv env
+pip install flask
+.\env\Scripts\activate
+>> python .\app.py
+
+.\env\Scripts\activate
+pip list
+
+
+create a folder instance 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///D:/anime2/anime3/flaskmarket/instance/market.db'
+
+ pip install flask-sqlalchemy
+ python
+
+from app import app, db
+
+
+with app.app_context():
+    db.create_all()
+
+from app import db, Item, app  
+with app.app_context():
+   
+    item1 = Item(name="Phone", barcode="893212299897", price=500, description="A great smartphone")
+    db.session.add(item1)
+    db.session.commit()
+
+
+with app.app_context():   
+	items = Item.query.all()
+print(items)
+
+	item2 = Item(name="Keyboard", barcode="231985128446", price=150, description="A great laptop")
+	db.session.add(item2)
+	db.session.commit()
+'id': 3, 'name': 'Keyboard', 'barcode': '231985128446', 'price': 150
+
+
+from app import db, Item, app  
+with app.app_context():
+	item3 = Item(name="Keyboard", barcode="231985128446", price=150, description="A great keyboard")
+	db.session.add(item3)
+	db.session.commit()
+from app import db, Item, app  
+with app.app_context():
+    Item.query.all()
+
+
+ python .\run.py
+
+
+from market.models import app, db
+
+
+with app.app_context():
+    db.create_all()
+
+from market.models import User, Item
+u1=User(username='vish',password_hash='123456',email_address='vish@vish.com')
+db.session.add(u1)
+db.session.commit()
+
+
+from market import app, db
+from market.models import User, Item
+
+
+with app.app_context():
+	db.create_all()
+
+with app.app_context():
+	u1 = User(username='vish', password_hash='123456', email_address='vish@vish.com')
+	db.session.add(u1)
+	db.session.commit()
+
+'deb907147a8a507ca21fae8c'
+
+from market import app, db
+from market.models import User, Item
+with app.app_context():
+    User.query.all()
+
+from market import app, db
+with app.app_context():
+	 db.drop_all()
+
+from market import app, db
+with app.app_context():
+	db.create_all()
+	item1 = Item(name="Phone", barcode="893212299897", price=500, description="A great smartphone")
+	db.session.add(item1)
+	db.session.commit()
+	item2 = Item(name="Laptop", barcode="458680229256", price=900, description="A great laptop")
+	db.session.add(item2)
+	db.session.commit()
+	item3 = Item(name="Keyboard", barcode="231985128446", price=150, description="A great keyboard")
+	db.session.add(item3)
+	db.session.commit()
+
+from market import app, db
+with app.app_context():
+	item2 = Item(name="Laptop", barcode="458680229256", price=900, description="A great laptop")
+	db.session.add(item2)
+	db.session.commit()
+	item3 = Item(name="Keyboard", barcode="231985128446", price=150, description="A great keyboard")
+	db.session.add(item3)
+	db.session.commit()
+	
+from market import app, db
+with app.app_context():
+	Item.query.all()
+
+from market import app, db
+with app.app_context():
+	item1=Item.query.filter_by(name='Phone').first()
+from market import app, db
+from market.models import User, Item
+with app.app_context():
+	item1.owner=User.query.filter_by(username='vish').first().id
+	db.session.add(item1)
+	db.session.commit()
+
+from market import app, db
+from market.models import User, Item
+with app.app_context():
+	item1 = Item.query.filter_by(name='Phone').first()
+	user1 = User.query.filter_by(username='vish').first()
+
+	if item1 and user1:
+		item1.owner = user1.id  
+		db.session.commit()  
+	else:
+		print("Item or user not found")
+
+
+from market import app, db
+from market.models import User, Item
+
+
+with app.app_context():
+	i=Item.query.filter_by(name='Phone').first()
+	i.owned_user
+	
+
+   
+    item1 = Item.query.filter_by(name='Phone').first()
+    user1 = User.query.filter_by(username='vish').first()
+
+    if item1 and user1:  # Indented if block
+        item1.owner = user1.id  
+        db.session.commit()  
+    else:  
+        print("Item or user not found")  
+
+from market import app, db
+from market.models import Item  
+with app.app_context():
+    
+    item4 = Item(
+        name="Drone Camera",
+        barcode="123456789012",
+        price=350,
+        description="A quadcopter drone with a 4K camera and 30 minutes of flight time. "
+                    "Ideal for aerial photography and capturing stunning landscapes."
+    )
+    db.session.add(item4)
+    db.session.commit()
+    
+
+from market import app, db
+from market.models import Item  
+with app.app_context():
+    item5 = Item(
+        name="4K TV",
+        barcode="987654321098",
+        price=550,
+        description="Ultra-HD 4K television with HDR support and 120Hz refresh rate. "
+                    "Perfect for home entertainment, sports, and movies with stunning clarity."
+    )
+    db.session.add(item5)
+    db.session.commit()
+
+from market import app, db
+from market.models import Item  
+with app.app_context():
+    item6 = Item(
+        name="Electric Skateboard",
+        barcode="658974561230",
+        price=400,
+        description="A sleek electric skateboard with a top speed of 22 mph. "
+                    "Perfect for commuting, cruising, and having fun around the city."
+    )
+    db.session.add(item6)
+    db.session.commit()
+
+from market import app, db
+from market.models import Item  
+with app.app_context():
+    item5 = Item(
+        name="4K TV",
+        barcode="987654321098",
+        price=550,
+        description="Ultra-HD 4K television with HDR support and 120Hz refresh rate. "
+                    "Perfect for home entertainment, sports, and movies with stunning clarity."
+    )
+    db.session.add(item7)
+    db.session.commit()
+from market import app, db
+from market.models import Item  
+with app.app_context():
+ 
+    item7 = Item(
+        name="Digital Camera",
+        barcode="789456123234",
+        price=350,
+        description="High-resolution digital camera with 20MP sensor and 4K video recording. "
+                    "Great for capturing beautiful moments and professional photography."
+    )
+
+    item8 = Item(
+        name="Wireless Headphones",
+        barcode="321654987654",
+        price=150,
+        description="Noise-canceling wireless headphones with up to 30 hours of battery life. "
+                    "Enjoy immersive sound and comfort for long listening sessions."
+    )
+
+    
+   
+    db.session.add(item7)
+    db.session.add(item8)
+    db.session.commit()
+
+    

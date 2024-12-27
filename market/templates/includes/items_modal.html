@@ -1,0 +1,74 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+  .modal-content{
+    background-color: #212121;
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: center;
+  }
+  .purchase-btn {
+    width: 100%; /* Makes the button take up the full width of the parent */
+  }
+</style>
+<div class="modal fade" id="Modal-MoreInfo-{{item.id}}" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="ModalLabel">
+  
+
+          {{item.name}}
+        </h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+       {{item.description}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Purchase confirm -->
+<div class="modal fade" id="Modal-PurchaseConfirm-{{item.id}}" tabindex="-1"  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="ModalLabel">
+  
+
+          {{item.name}}
+        </h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+       <form action="" method="post">
+       
+        {{ purchase_form.hidden_tag() }}
+        <h4 class="text-center">
+          Are you sure you want to buy {{item.name}} for {{item.price}}$?
+        </h4><br>
+        <h6 class="text-center">
+          By clicking Purchase ,you will puchase this item
+          .</h6> <br>
+        <input id="purchased_item" name="purchased_item" type="hidden" value="{{item.name}}">
+        {{purchase_form.submit(class="btn btn-outline-success btn-block btn-lg purchase-btn")}}
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
